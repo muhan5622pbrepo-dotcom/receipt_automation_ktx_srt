@@ -303,15 +303,37 @@ def monitor_logic(window, start_date, end_date, save_path):
                      var listItems = document.querySelectorAll('.tckList');
                      var targetIndex = -1;
                      var matchCount = 0;
+                     var targetStart = parseInt('{start_date}');
+                     var targetEnd = parseInt('{end_date}');
                      
                      for (var i=0; i<listItems.length; i++) {{
-                         if (listItems[i].innerText.includes('인쇄완료')) {{
-                             if (matchCount === {current_processing_index}) {{
-                                 targetIndex = i;
-                                 break;
-                             }}
-                             matchCount++;
+                         var item = listItems[i];
+
+                         // 1. Check '인쇄완료'
+                         if (!item.innerText.includes('인쇄완료')) {{
+                             continue;
                          }}
+
+                         // 2. Check Date (Same logic as extraction)
+                         var dtSpan = item.querySelector('.dt');
+                         if (!dtSpan) continue;
+                         
+                         var txt = dtSpan.innerText;
+                         var parts = txt.match(/(\d{{4}})년\s*(\d{{2}})월\s*(\d{{2}})일/);
+                         if (!parts) continue;
+                         
+                         var dateNum = parseInt(parts[1] + parts[2] + parts[3]);
+                         
+                         if (dateNum < targetStart || dateNum > targetEnd) {{
+                             continue;
+                         }}
+
+                         // If passed both filters, it counts as a match
+                         if (matchCount === {current_processing_index}) {{
+                             targetIndex = i;
+                             break;
+                         }}
+                         matchCount++;
                      }}
                      
                      if (targetIndex === -1) return 'ITEM_NOT_FOUND';
