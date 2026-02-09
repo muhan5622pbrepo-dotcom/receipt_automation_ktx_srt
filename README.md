@@ -51,6 +51,7 @@ or
 cd receipt_automation_srt
 
 # 3. 필요한 라이브러리 설치
+python.exe -m pip install --upgrade pip
 pip install -r requirements.txt
 
 # 4. 프로그램 실행
