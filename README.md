@@ -57,6 +57,14 @@ python -m pip install -r requirements.txt
 # 4. 프로그램 실행
 python launcher.py
 
+# 5. SRT 미동작 시 대처 방법
+cd receipt_automation_srt2
+
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+
+python launcher.py
+
 ```
 
 ---
