@@ -43,7 +43,7 @@ Python 설치: https://www.python.org/downloads/
 Git 설치가 완료되었다면, 아래 명령어를 순서대로 입력하여 프로젝트를 복제하고 실행할 수 있습니다.
 ```bash
 # 1. 레포지토리 복제
-git clone https://github.com/Galileo09/receipt_automation_ktx_srt
+git clone https://github.com/muhan5622pbrepo-dotcom/receipt_automation_ktx_srt.git
 
 # 2. 폴더 이동
 cd receipt_automation_ktx
@@ -57,7 +57,7 @@ python -m pip install -r requirements.txt
 # 4. 프로그램 실행
 python launcher.py
 
-# 5. SRT 미동작 시 대처 방법
+# 5. SRT 미동작 시 보조버전 사용
 cd receipt_automation_srt2
 
 python -m pip install --upgrade pip
